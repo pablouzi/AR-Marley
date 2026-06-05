@@ -6,30 +6,37 @@
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.5.0/dist/aframe-extras.min.js"></script>
   </head>
   <body>
+
+<!--  IMAGEN  DEL TARGET  -->
     <a-scene mindar-image="imageTargetSrc: targets/targets.mind;
               maxTrack: 1; 
               uiScanning: #scanning; 
-              filterMinCF: 0.001; 
-              filterBeta: 0.001;
+              filterMinCF: 0.06; 
+              filterBeta: 0.06;
               missTolerance: 1"
     color-space="sRGB" 
     renderer="colorManagement: true, physicallyCorrectLights" 
     vr-mode-ui="enabled: false" 
     device-orientation-permission-ui="enabled: false">
-      <a-assets>
-        <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" />
-        <a-asset-item id="avatarModel" src="assets/cubo.glb"></a-asset-item>
-      </a-assets>
 
+<!--  OBJETO 3D QUE CARGA -->
+      <a-assets>
+      <a-asset-item id="avatarModel" src="assets/marley.glb"></a-asset-item>
+      <!--  <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" /> -->
+      </a-assets>
+      
+<!--  POSICION DE LA CAMARA -->
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      
+<!--  AJUSTES DEL MODELO 3D -->
       <a-entity mindar-image-target="targetIndex: 0">
-        <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+        <!--<a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>-->
         <a-gltf-model 
-    src="#avatarModel" 
-    position="0 0 0" 
-    scale="0.3 0.3 0.3" 
-    animation-mixer="clip: *; loop: repeat; timeScale: 1;">
-</a-gltf-model>
+          src="#avatarModel" 
+          position="0 0 0" 
+          scale="0.3 0.3 0.3" 
+          animation-mixer="clip: *; loop: repeat; timeScale: 1;">
+        </a-gltf-model>
       </a-entity>
     </a-scene>
   </body>
